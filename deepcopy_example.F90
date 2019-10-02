@@ -141,7 +141,7 @@ contains
 ! and then subsequently issuing transfers of the lower level data later, which would only 
 ! duplicate those transfers of the lower level derived type members.
     if(acc_debug_on)then
-       call acc_manual_upd_hostv_shallow(lvl1_var)
+!      call acc_manual_upd_hostv_shallow(lvl1_var)
     endif
 !$acc exit data copyout(lvl1_var%field1)
 
@@ -156,7 +156,7 @@ contains
 
 ! if debugging flag is set, enforce a data transfer even if data is already present 
     if(acc_debug_on)then
-       call acc_manual_upd_hostv_shallow(lvl2_var)
+!      call acc_manual_upd_hostv_shallow(lvl2_var)
     endif
 
 !$acc exit data copyout(lvl2_var%field2)
@@ -352,7 +352,7 @@ program example
 ! routines. For demonstration, the 1st iteration of the below loop runs normal, then on the 2nd
 ! iteration, acc_debug_on is set and the results are correct.
 
-  do iter=1,2
+  do iter=1,10
      if(iter==2) acc_debug_on=.true.
 
      print*,'Iteration:',iter,'acc_debug_on:',acc_debug_on
